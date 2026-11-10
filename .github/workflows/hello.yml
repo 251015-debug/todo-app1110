@@ -28,6 +28,22 @@ jobs:
           echo "コミット：${{ github.sha }}"
           echo "リポジトリ：${{ github.repository }}"
           echo "ランナーの OS：${{ runner.os }}"
+      - name: 自分の情報
+        run: |
+          echo "${{ github.actor }} が ${{ github.ref_name }} ブランチに pushしました。"
+          TZ=Asia/Tokyo date
+      - name: ランナーを調べる
+        run: |
+          uname -a
+          node -v
+          npm -v
+          pwd
+          ls -la
+      - name: package.json の名前を表示
+        run: |
+          cat package.json
+          node -e "console.log(require('./package.json').name)"
+
 
   goodbye:
       needs: greet
@@ -35,3 +51,17 @@ jobs:
       steps:
         - name: お別れ
           run: echo "greet が終わったので goodbye です"
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "準備"
+  build:
+    needs: prepare
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "ビルド"
+  check:
+    needs: prepare
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "チェック"
