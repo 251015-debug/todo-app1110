@@ -32,6 +32,15 @@ jobs:
         run: |
           echo "${{ github.actor }} が ${{ github.ref_name }} ブランチに pushしました。"
           TZ=Asia/Tokyo date
+      - name: ランナーを調べる
+        run: |
+          uname -a
+          node -v
+          npm -v
+          pwd
+          ls -la
+
+
   goodbye:
       needs: greet
       runs-on: ubuntu-latest
