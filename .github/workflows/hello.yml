@@ -44,13 +44,12 @@ jobs:
           cat package.json
           node -e "console.log(require('./package.json').name)"
 
-
   goodbye:
-      needs: greet
-      runs-on: ubuntu-latest
-      steps:
-        - name: お別れ
-          run: echo "greet が終わったので goodbye です"
+    needs: greet
+    runs-on: ubuntu-latest
+    steps:
+      - name: お別れ
+        run: echo "greet が終わったので goodbye です"
   prepare:
     runs-on: ubuntu-latest
     steps:
