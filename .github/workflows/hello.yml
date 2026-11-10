@@ -29,7 +29,7 @@ jobs:
           echo "リポジトリ：${{ github.repository }}"
           echo "ランナーの OS：${{ runner.os }}"
       - name: 自分の情報
-        run: 
+        run: |
           echo "%{{ github.actor }} が ${{ github.ref_name }} ブランチに pushしました。"
           TZ=Asia/Tokyo date
   goodbye:
